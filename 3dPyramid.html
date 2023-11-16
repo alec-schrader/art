@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <canvas id="canvas" width="500" height="500">
+    Your browser doesn't appear to support the
+    <code>&lt;canvas&gt;</code> element.
+  </canvas>
+  <script type="text/javascript">
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    //x, y, z
+    // ctx.beginPath();
+    // ctx.globalAlpha=0.2;
+    // ctx.strokeStyle = '#ff0000';
+    // ctx.moveTo(250, 0);
+    // ctx.lineTo(250, 500);
+    // ctx.moveTo(0, 250);
+    // ctx.lineTo(500, 250);
+    // ctx.moveTo(500, 0);
+    // ctx.lineTo(0, 500);
+    // ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(250, 50);
+    ctx.lineTo(250, 250);
+    ctx.lineTo(450, 250);
+    ctx.lineTo(450, 50);
+    ctx.lineTo(250, 50);
+    ctx.moveTo(250, 250);
+    ctx.lineTo(108.5785, 391.4215);
+    ctx.lineTo(108.5785, 191.4215);
+    ctx.lineTo(250, 50);
+    ctx.moveTo(108.5785, 391.4215);
+    ctx.lineTo(308.5785, 391.4215);
+    ctx.lineTo(450, 250);
+    ctx.moveTo(108.5785, 191.4215);
+    ctx.lineTo(308.5785, 191.4215);
+    ctx.lineTo(450, 50);
+    ctx.moveTo(308.5785, 391.4215);
+    ctx.lineTo(308.5785, 191.4215);
+    ctx.stroke();
+
+    console.log(Math.sqrt(Math.pow(250 - 108.5785,2) + Math.pow(250 - 391.4215,2)))
+
+    // ctx.globalAlpha=1;
+    // var len = 450, x = 250, y = 50, h = Math.sqrt(Math.pow(len,2) - Math.pow(len/2,2));
+    // var points = [[x, y],[x + (len /2), y + h],[x - (len /2), y + h],[x, y + (len /1.25)]];
+    // console.log(points);
+    // ctx.beginPath();
+    // ctx.strokeStyle = 'black';
+    // ctx.moveTo(points[0][0],points[0][1]);
+    // ctx.lineTo(points[1][0],points[1][1]);
+    // ctx.lineTo(points[2][0],points[2][1]);
+    // ctx.lineTo(points[0][0],points[0][1]);
+    // ctx.lineTo(points[3][0],points[3][1]);
+    // ctx.lineTo(points[1][0],points[1][1]);
+    // ctx.moveTo(points[3][0],points[3][1]);
+    // ctx.lineTo(points[2][0],points[2][1]);
+    // ctx.stroke();
+    //
+    //
+
+  </script>
+</body>
+</html>

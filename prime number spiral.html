@@ -1,0 +1,141 @@
+<html>
+	<head>
+		<script src="jquery-1.11.3.js"></script>
+		
+	</head>
+	<body>
+			<canvas id="myCanvas" width="700" height="700" style="border: 1px solid rgb(195, 195, 195);">
+				Your browser does not support the HTML5 canvas tag.
+			</canvas>
+		<script>
+		$(document).ready(function(){
+			
+			var canvas = document.getElementById("myCanvas");
+			var ctx = canvas.getContext("2d");
+			
+			function clear() {
+				ctx.clearRect(0, 0, 700, 700 );
+			}
+			
+			//guide lines
+			ctx.moveTo(0,350);
+			ctx.lineTo(700,350);
+			ctx.stroke();
+			
+			ctx.moveTo(350,0);
+			ctx.lineTo(350,700);
+			ctx.stroke();
+			
+			//n=1
+			for(i=0;i<700;i+=10){
+				ctx.moveTo(i,0);
+				ctx.lineTo(700,i);
+				ctx.stroke();
+			}
+			
+			for(i=0;i<700;i+=10){
+				ctx.moveTo(0,i);
+				ctx.lineTo(i,700);
+				ctx.stroke();
+			}
+			
+			var j=700;
+			for(i=0;i<700;i+=10){
+				ctx.moveTo(i,700);
+				ctx.lineTo(700,j);
+				ctx.stroke();
+				j-=10;
+			}
+			
+			j=700
+			for(i=0;i<700;i+=10){
+				ctx.moveTo(j,0);
+				ctx.lineTo(0,i);
+				ctx.stroke();
+				j-=10;
+			}
+			//draw rightmost line
+			ctx.moveTo(700,0);
+			ctx.lineTo(700,700);
+			ctx.stroke();
+			
+			//n=2
+			var x;
+			j=60;
+			for(i=350;i<640;i+=10){
+				x=700-j;
+				ctx.moveTo(i,j);
+				ctx.lineTo(x,i);
+				ctx.stroke();
+				j+=10;
+			}
+			
+			j=350;
+			for(i=60;i<350;i+=10){
+				x=700-j;
+				ctx.moveTo(j,i);
+				ctx.lineTo(i,x);
+				ctx.stroke();
+				j-=10;
+			}
+			
+			j=350;
+			for(i=60;i<350;i+=10){
+				x=700-j;
+				ctx.moveTo(j,i);
+				ctx.lineTo(i,x);
+				ctx.stroke();
+				j+=10;
+			}
+			
+			j=60;
+			for(i=350;i<640;i+=10){
+				x=700-j;
+				ctx.moveTo(j,i);
+				ctx.lineTo(i,x);
+				ctx.stroke();
+				j+=10;
+			}
+			//draw rightmost line
+			ctx.moveTo(640,350);
+			ctx.lineTo(350,640);
+			ctx.stroke();
+			
+			//n=3
+			for(i=230;i<470;i+=10){
+				ctx.moveTo(i,230);
+				ctx.lineTo(470,i);
+				ctx.stroke();
+			}
+			
+			for(i=230;i<470;i+=10){
+				ctx.moveTo(230,i);
+				ctx.lineTo(i,470);
+				ctx.stroke();
+			}
+			
+			var j=470;
+			for(i=230;i<470;i+=10){
+				ctx.moveTo(i,470);
+				ctx.lineTo(470,j);
+				ctx.stroke();
+				j-=10;
+			}
+			
+			j=470
+			for(i=230;i<470;i+=10){
+				ctx.moveTo(j,230);
+				ctx.lineTo(230,i);
+				ctx.stroke();
+				j-=10;
+			}
+			//draw rightmost line
+			ctx.moveTo(470,230);
+			ctx.lineTo(470,470);
+			ctx.stroke();
+			
+			var ratio=.585191819
+		});	
+		</script>
+	</body>
+</html>

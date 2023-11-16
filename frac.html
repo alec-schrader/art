@@ -1,0 +1,166 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="1200" height="1200" style="border: 1px solid rgb(195, 195, 195);">
+			Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		<script>
+			var canvas = document.getElementById("myCanvas");
+			var ctx = canvas.getContext("2d");
+			ctx.strokeStyle = '#ff0000';
+			ctx.lineWidth = 5;
+
+			//*** height to side ratio .86605 (ex. s=400 r=.86605 h=s*r=346.42 600-h=253.58=y for peak)
+
+			var x=0,y=600,l=400,r=.86605,t=1200;
+
+			repeat(x,y,l,t)
+
+			function repeat(x,y,l,t){
+				var color = Math.floor(Math.random()*7);
+				switch (color) {
+					case 0:
+						ctx.strokeStyle='red'
+						break;
+					case 1:
+						ctx.strokeStyle='orange'
+						break;
+					case 2:
+						ctx.strokeStyle='yellow'
+						break;
+					case 3:
+						ctx.strokeStyle='green'
+						break;
+					case 4:
+						ctx.strokeStyle='blue'
+						break;
+					case 5:
+						ctx.strokeStyle='indigo'
+						break;
+					case 6:
+						ctx.strokeStyle='purple'
+						break;
+				}
+				if(l<=5){
+					// console.log('Done!');
+					return
+				}
+				if(x >=800 || (t/3)*2 >= 800){
+					console.log('x:'+x+' y:'+y+' l:'+(y-(l*r))+' t:'+t/3)
+					console.log('x:'+(t/3)*2+' y:'+y+' l:'+(y-(l*r))+' t:'+t/3)
+
+				}
+
+				ctx.beginPath();
+	      ctx.moveTo(x, y);
+	      ctx.lineTo(x+l,y);
+				ctx.lineTo(x+(l*1.5),y-(l*r));
+				ctx.lineTo(x+(2*l),y);
+				ctx.lineTo(x+(3*l), y);
+	      ctx.stroke();
+				repeat(x,y,l/3,t/3);
+				repeat((t/3)*2,y,l/3,t/3);
+				//
+				// x=(t/3)*2
+				//
+				// ctx.beginPath();
+	      // ctx.moveTo(x, y);
+	      // ctx.lineTo(x+l,y);
+				// ctx.lineTo(x+(l*1.5),y-(l*r));
+				// ctx.lineTo(x+(2*l),y);
+				// ctx.lineTo(x+(3*l), y);
+	      // ctx.stroke();
+				// repeat(x,y,l,t);
+				// repeat((t/3)*2,y,l,t);
+			}
+
+			// ctx.beginPath();
+      // ctx.moveTo(0, 600);
+      // ctx.lineTo(133,600);
+			// ctx.lineTo(200,484.82);
+			// ctx.lineTo(266,600);
+			// ctx.lineTo(400, 600);
+      // ctx.stroke();
+			//
+			// ctx.beginPath();
+      // ctx.moveTo(800,600);
+      // ctx.lineTo(933,600);
+			// ctx.lineTo(1000,484.82);
+			// ctx.lineTo(1066,600);
+			// ctx.lineTo(1200, 600);
+      // ctx.stroke();
+
+
+      //pattern(canvas.height,0,0);
+      function pattern(len,x,y){
+        ctx.beginPath();
+  			ctx.moveTo(x,y);
+  			ctx.lineTo(x + len, y);
+        ctx.lineTo(x + len, y + len);
+        ctx.lineTo(x, y + len);
+
+  			ctx.fill();
+
+        len = len/3;
+        x = x + len;
+        y = y +len;
+
+        drawSquares(len, x, y);
+        function drawSquares(len, x, y){
+          if(len < 1) {
+            return
+          }
+          var color = Math.floor(Math.random()*7);
+          switch (color) {
+  					case 0:
+  						ctx.fillStyle='red'
+  						break;
+  					case 1:
+  						ctx.fillStyle='orange'
+  						break;
+  					case 2:
+  						ctx.fillStyle='yellow'
+  						break;
+  					case 3:
+  						ctx.fillStyle='green'
+  						break;
+  					case 4:
+  						ctx.fillStyle='blue'
+  						break;
+  					case 5:
+  						ctx.fillStyle='indigo'
+  						break;
+  					case 6:
+  						ctx.fillStyle='purple'
+  						break;
+  				}
+          ctx.beginPath();
+    			ctx.moveTo(x,y);
+    			ctx.lineTo(x + len, y);
+          ctx.lineTo(x + len, y + len);
+          ctx.lineTo(x, y + len);
+
+          ctx.fill();
+
+          //triangle(len,x,y+Math.sqrt(Math.pow(len,2) - Math.pow(len/2,2)))
+
+          len = len/3;
+          x = x - 2 * len;
+          y = y - 2 * len;
+
+          setTimeout(function(){
+            drawSquares(len, x, y);
+            drawSquares(len, x + (3 * len), y);
+            drawSquares(len, x, y + (3 * len));
+            drawSquares(len, x + (6 * len), y);
+            drawSquares(len, x, y + (6 * len));
+            drawSquares(len, x + (3 * len), y + (6 * len));
+            drawSquares(len, x + (6 * len), y + (3 * len));
+            drawSquares(len, x + (6 * len), y + (6 * len));
+          }, 2000);
+        }
+      }
+    </script>
+  </body>
+</html>

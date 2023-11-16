@@ -1,0 +1,139 @@
+<html>
+	<head>
+		<script src="jquery-1.11.3.js"></script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="1000" height="1000" style="border: 1px solid rgb(195, 195, 195);">
+			Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		<button>click</button>
+		<script>
+			var canvas = document.getElementById("myCanvas");
+			var ctx = canvas.getContext("2d");
+			ctx.fillStyle="grey";
+      square(canvas.height,0,0);
+      function square(len,x,y){
+        ctx.beginPath();
+  			ctx.moveTo(x,y);
+  			ctx.lineTo(x + len, y);
+        ctx.lineTo(x + len, y + len);
+        ctx.lineTo(x, y + len);
+
+  			ctx.fill();
+
+        len = len/3;
+        x = x + len;
+        y = y +len;
+
+        drawSquares(len, x, y);
+        function drawSquares(len, x, y){
+          if(len < 1) {
+            return
+          }
+          var color = Math.floor(Math.random()*7);
+          switch (color) {
+  					case 0:
+  						ctx.fillStyle='red'
+  						break;
+  					case 1:
+  						ctx.fillStyle='orange'
+  						break;
+  					case 2:
+  						ctx.fillStyle='yellow'
+  						break;
+  					case 3:
+  						ctx.fillStyle='green'
+  						break;
+  					case 4:
+  						ctx.fillStyle='blue'
+  						break;
+  					case 5:
+  						ctx.fillStyle='indigo'
+  						break;
+  					case 6:
+  						ctx.fillStyle='purple'
+  						break;
+  				}
+          ctx.beginPath();
+    			ctx.moveTo(x,y);
+    			ctx.lineTo(x + len, y);
+          ctx.lineTo(x + len, y + len);
+          ctx.lineTo(x, y + len);
+
+          ctx.fill();
+
+          //triangle(len,x,y+Math.sqrt(Math.pow(len,2) - Math.pow(len/2,2)))
+
+          len = len/3;
+          x = x - 2 * len;
+          y = y - 2 * len;
+
+          setTimeout(function(){
+            drawSquares(len, x, y);
+            drawSquares(len, x + (3 * len), y);
+            drawSquares(len, x, y + (3 * len));
+            drawSquares(len, x + (6 * len), y);
+            drawSquares(len, x, y + (6 * len));
+            drawSquares(len, x + (3 * len), y + (6 * len));
+            drawSquares(len, x + (6 * len), y + (3 * len));
+            drawSquares(len, x + (6 * len), y + (6 * len));
+          }, 2000);
+
+
+        }
+      }
+
+
+
+      function triangle(len,x,y){
+				var len = len/2, x = x + len;
+
+				h = Math.sqrt(Math.pow(len,2) - Math.pow(len/2,2));
+
+
+				drawTriangle(len, x, y, h);
+				function drawTriangle(len, x, y, h){
+					var color = Math.floor(Math.random()*7);
+					if(h<1){
+						return
+					}
+					switch (color) {
+						case 0:
+							ctx.fillStyle='red'
+							break;
+						case 1:
+							ctx.fillStyle='orange'
+							break;
+						case 2:
+							ctx.fillStyle='yellow'
+							break;
+						case 3:
+							ctx.fillStyle='green'
+							break;
+						case 4:
+							ctx.fillStyle='blue'
+							break;
+						case 5:
+							ctx.fillStyle='indigo'
+							break;
+						case 6:
+							ctx.fillStyle='purple'
+							break;
+					}
+					var points = [[x, y],[x - (len /2), y - h],[x + (len /2), y - h]];
+					ctx.beginPath();
+					ctx.moveTo(points[0][0],points[0][1]);
+					ctx.lineTo(points[1][0],points[1][1]);
+					ctx.lineTo(points[2][0],points[2][1]);
+					ctx.fill();
+					len = len/2;
+					var topy = y - h
+					h = Math.sqrt(Math.pow(len,2) - Math.pow(len/2,2));
+					drawTriangle(len, x + len, y, h);
+					drawTriangle(len, x - len, y, h);
+					drawTriangle(len, x, topy, h);
+				}
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<script src="jquery-1.11.3.js"></script>
+
+	</head>
+	<body>
+			<canvas id="myCanvas" width="700" height="700" style="border: 1px solid rgb(195, 195, 195);">
+				Your browser does not support the HTML5 canvas tag.
+			</canvas>
+		<script>
+			var canvas = document.getElementById("myCanvas");
+			var ctx = canvas.getContext("2d");
+
+			//var ratio=.342857143;
+			var ratio=.5
+			function drawSquare(sideLenght,x,y){
+				ctx.moveTo(x,y);
+				ctx.lineTo(x+sideLenght,y);
+				ctx.stroke();
+
+				ctx.moveTo(x+sideLenght,y);
+				ctx.lineTo(x+sideLenght,y+sideLenght);
+				ctx.stroke();
+
+				ctx.moveTo(x,y);
+				ctx.lineTo(x,y+sideLenght);
+				ctx.stroke();
+
+				ctx.moveTo(x,y+sideLenght);
+				ctx.lineTo(x+sideLenght,y+sideLenght);
+				ctx.stroke();
+			}
+			var x=0;
+			var y=0;
+			var sideLenght=700/ratio;
+			var rotate=false;
+			debugger;
+			for(var i=0;i<5;i++){
+				if(rotate==true){
+					console.log('fuck');
+					ctx.save();
+					ctx.rotate((Math.PI/180)*45);
+					ctx.translate(145,-350);
+					rotate=false;
+				}else{
+					rotate=true;
+					ctx.restore();
+				};
+
+				sideLenght=sideLenght*ratio;
+				x=(700-sideLenght)/2;
+				y=x;
+				drawSquare(sideLenght,y,x);//75,75,350;
+
+
+			}
+
+			ctx.moveTo(0,350);
+			ctx.lineTo(700,350);
+			ctx.stroke();
+
+			ctx.moveTo(350,0);
+			ctx.lineTo(350,700);
+			ctx.stroke();
+		</script>
+	</body>
+</html>
